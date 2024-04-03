@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Address Book || Add new contact</title>
+    <link rel="stylesheet" href="/stylesheets/output.css" />
+  </head>
+  <body class="">
+    <head>
+      <h1 class="text-blue-500 text-5xl my-3 w-4/12 mx-auto text-center p-5">
+        Add New Contact
+      </h1>
+    </head>
+    <main
+      class="bg-blue-300 bg-cover bg-center min-h-auto mx-auto w-3/4 p-10 rounded-xl"
+    >
+      <form
+        action="/contact/add"
+        method="post"
+        class="bg-blue-300 text-white text-xl flex justify-around items-center px-20 rounded mt-20"
+      >
+        <div class="flex flex-col w-2/5">
+          <label for="civility" class="text-3xl">Civility:</label>
+          <select
+            required
+            type="select"
+            id="civility"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500 focus:ring-blue-500 focus:invalid:bg-red-500 invalid:text-red-500"
+            name="civility"
+          >
+            <option value="Select">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Undefined">Undefined</option>
+          </select>
+          <label for="name" class="text-3xl">Name:</label>
+          <input
+            required
+            type="text"
+            id="name"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500 focus:invalid:outline-red-500 focus:invalid:text-red-500 focus:invalid:placeholder-red-500"
+            name="name"
+            placeholder="Name..."
+          />
+          <label for="FirstName" class="text-3xl">FirstName:</label>
+          <input
+            required
+            type="text"
+            id="FirstName"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500 focus:invalid:outline-red-500 focus:invalid:text-red-500 focus:invalid:placeholder-red-500"
+            name="firstname"
+            placeholder="First name..."
+          />
+        </div>
+
+        <div class="flex flex-col w-2/5 pl-5">
+          <label for="PhoneNumber" class="text-3xl">PhoneNumber:</label>
+          <input
+            required
+            type="tel"
+            id="PhoneNumber"
+            class="rounded text-blue-400 py-3 placeholder:text-blue-300 placeholder:italic pl-3 my-3 focus:outline-blue-500 focus:invalid:outline-red-500 focus:invalid:text-red-500 focus:invalid:placeholder-red-500"
+            name="telephone"
+            pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
+            placeholder="xx-xx-xx-xx-xx"
+          />
+          <label for="Email" class="text-3xl">Email:</label>
+          <input
+            required
+            type="email"
+            id="Email"
+            class="rounded text-blue-400 py-3 pl-3 my-3 placeholder:text-blue-300 placeholder:italic focus:outline-blue-500 focus:invalid:outline-red-500 focus:invalid:text-red-500 focus:invalid:placeholder-red-500"
+            name="email"
+            placeholder="Please enter a valid email..."
+          />
+
+          <label for="dateInput" class="text-3xl">Birthday:</label>
+          <input
+            type="date"
+            id="dateInput"
+            name="birthday"
+            class="rounded text-blue-400 py-3 pl-3 my-3 focus:outline-blue-500 focus:invalid:outline-red-500 focus:invalid:text-red-500 focus:invalid:placeholder-red-500"
+          />
+        </div>
+
+        <div class="flex flex-col justify-around items-center mx-auto">
+          <button
+            class="bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 mt-3 w-40 rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl focus:outline-blue-500"
+          >
+            Save
+          </button>
+
+          <a
+            href="/"
+            class="inline-block bg-blue-300 hover:bg-white text-white hover:text-blue-300 p-2 w-40 mt-2 text-center rounded border-solid border-2 border-white hover:border-blue-300 hover:shadow-inner text-xl"
+            >Go Back</a
+          >
+        </div>
+      </form>
+    </main>
+    <div class="flex flex-row gap-64 justify-center items-center my-5"></div>
+
+    <script>
+      const todayDate = new Date().toISOString().split("T")[0];
+      document.getElementById("dateInput").setAttribute("max", todayDate);
+    </script>
+  </body>
+</html>
