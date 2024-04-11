@@ -40,7 +40,5 @@ app.use("/*", (req, res) => {
   res.render("error");
 });
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
-
 
 module.exports = app;
