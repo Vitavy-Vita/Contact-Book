@@ -17,11 +17,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// scope issue, cant make it reach
 const csvFilePath = ["public", "contacts.csv"];
 app.use((req, res, next) => {
   const results = [];
-  // fs.createReadStream(csvFilePath)
+
   try {
     fs.createReadStream(path.join(...csvFilePath))
       .pipe(csv.parse({ columns: true, trim: true }))
@@ -32,13 +31,16 @@ app.use((req, res, next) => {
         next();
       });
   } catch (error) {
-
     res.render("Contact-not-found", { error });
   }
 });
 
 app.use("/", contactRouter);
-app.use('/*', (req,res)=>{
-  res.render('error')
-})
+app.use("/*", (req, res) => {
+  res.render("error");
+});
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+
 module.exports = app;
